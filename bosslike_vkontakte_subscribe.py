@@ -64,9 +64,15 @@ for dotask in range(3):
 
     try:
         print 'Groups.enter:'
-        btn3 = soup.find('button', {'id': 'join_button'}).get('onclick')
+        # <button class="flat_button button_wide" id="join_button" onclick="Groups.enter(this, 157154132, '56602093674a9493b6', '_')">Вступить в группу</button>
+        #btn3 = soup.find('button', {'id': 'join_button'}).get('onclick')
         #print btn3
-        r = tab_popup.evaluate(btn3)
+        #r = tab_popup.evaluate(btn3)
+        r = tab_popup.evaluate('document.querySelectorAll("button#join_button")[0].click()')
+        print r
+        r = tab_popup.evaluate('document.querySelector("#page_actions button#public_subscribe").click()')
+        print r
+        r = tab_popup.evaluate('document.getElementsByClassName("profile_action_btn")[1].getElementsByTagName("button")[0].click()')
         print r
     except AttributeError:
         print 'Profile.toggleFriend:'
